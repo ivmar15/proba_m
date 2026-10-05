@@ -1,0 +1,19 @@
+name: Sailfish build test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    container:
+      image: coderus/sailfishos-platform-sdk:5.1.0.11
+
+    steps:
+      - name: Check SDK
+        run: |
+          uname -a
+          cat /etc/os-release || true
+          which sb2 || true
+          sb2 -t SailfishOS-5.1.0.11-armv7hl -R uname -a
