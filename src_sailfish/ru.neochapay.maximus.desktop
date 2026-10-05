@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+X-Nemo-Application-Type=silica-qt5
+Icon=ru.neochapay.maximus
+Exec=/usr/bin/ru.neochapay.maximus
+Name=Maximus
+Name[ru]=Максимус
+
+[X-Sailjail]
+Permissions=Internet;Pictures;Downloads
+OrganizationName=ru.neochapay
+ApplicationName=maximus
