@@ -16,4 +16,4 @@ jobs:
           uname -a
           cat /etc/os-release || true
           which sb2 || true
-          sb2 -t SailfishOS-5.1.0.11-armv7hl -R uname -a
+          sb2 -t list
