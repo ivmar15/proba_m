@@ -1,19 +1,24 @@
-name: Sailfish build test
+name: Sailfish build
 
 on:
   workflow_dispatch:
 
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
 
     container:
-      image: coderus/sailfishos-platform-sdk:5.1.0.11
+      image: ghcr.io/sailfishos-open/docker-sailfishos-builder-armv7hl:5.1.0.11
 
     steps:
-      - name: Check SDK
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build RPM
         run: |
-          uname -a
-          cat /etc/os-release || true
-          which sb2 || true
-          sb2-config -l
+          buildrpm
+            -r https://repo.sailfishos.org/obs/sailfishos:/chum:/testing/5.1.0.11_armv7hl/
+
+      - name: Show RPM
+        run: |
+          find RPMS -type f -name "*.rpm" -print
