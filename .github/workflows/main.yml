@@ -16,4 +16,4 @@ jobs:
           uname -a
           cat /etc/os-release || true
           which sb2 || true
-          sb2 -t list
+          sb2-config -l
