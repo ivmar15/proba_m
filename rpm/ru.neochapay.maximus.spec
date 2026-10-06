@@ -12,6 +12,7 @@ Source0:    %{name}-%{version}.tar.bz2
 Requires:   sailfishsilica-qt5
 Requires:   nemo-qml-plugin-notifications-qt5
 Requires:   qt5-qtgraphicaleffects
+
 BuildRequires: pkgconfig(sailfishapp)
 BuildRequires: pkgconfig(Qt5Core)
 BuildRequires: pkgconfig(Qt5Gui)
@@ -30,7 +31,7 @@ BuildRequires: pkgconfig(Qt5Network)
 %make_build
 
 %install
-%make_install
+%qmake5_install
 
 install -D -m 0644 src_sailfish/ru.neochapay.maximus.desktop \
     %{buildroot}%{_datadir}/applications/%{name}.desktop
