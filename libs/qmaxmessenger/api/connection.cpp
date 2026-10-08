@@ -66,7 +66,6 @@ void Connection::onConnected()
     }
 }
 
-
 void Connection::onDisconected()
 {
     if(m_connected) {
@@ -75,7 +74,6 @@ void Connection::onDisconected()
     }
     connectToSocket();
 }
-
 
 void Connection::onError(QAbstractSocket::SocketError error)
 {
@@ -124,12 +122,16 @@ void Connection::onReadyRead()
             return;
         }
 
-        QByteArray frame =  m_receiveBuffer.left(frameSize);
+        QByteArray frame = m_receiveBuffer.left(frameSize);
         m_receiveBuffer.remove(0, frameSize);
 
         RawApiMessage message(frame);
 
-        qDebug() << Q_FUNC_INFO << message;
+        qDebug() << "=== SERVER RESPONSE ===";
+        qDebug() << "SEQ:" << message.seq();
+        qDebug() << "OPCODE:" << message.opcode();
+        qDebug() << "PAYLOAD:" << message.payload();
+
         emit messageReceived(message);
     }
 }
