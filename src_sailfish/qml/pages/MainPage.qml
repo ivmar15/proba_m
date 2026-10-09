@@ -16,17 +16,35 @@
  * the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA 02110-1301, USA.
  */
-
-import QtQuick 2.0
+import QtQuick 2.6
 import Sailfish.Silica 1.0
 
 Page {
     objectName: "mainPage"
+
     allowedOrientations: Orientation.All
 
-    BusyIndicator {
-        size: BusyIndicatorSize.Large
+    PageHeader {
+        title: "MAX"
+    }
+
+    Column {
         anchors.centerIn: parent
-        running: true
+        width: parent.width
+
+        spacing: Theme.paddingLarge
+
+        BusyIndicator {
+            anchors.horizontalCenter: parent.horizontalCenter
+            size: BusyIndicatorSize.Large
+            running: true
+        }
+
+        Label {
+            anchors.horizontalCenter: parent.horizontalCenter
+            text: "Подключение к MAX…"
+            color: Theme.primaryColor
+            font.pixelSize: Theme.fontSizeMedium
+        }
     }
 }
